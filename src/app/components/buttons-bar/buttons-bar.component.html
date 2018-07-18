@@ -1,0 +1,11 @@
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-outline-primary" (click)="prevEvent($event)" *ngIf="!isWeekView">
+    &lt;
+  </label>
+  <label class="btn btn-outline-primary btn-label disabled">
+    {{current}}
+  </label>
+  <label class="btn btn-outline-primary" (click)="nextEvent($event)" *ngIf="!isWeekView">
+    &gt;
+  </label>
+</div>

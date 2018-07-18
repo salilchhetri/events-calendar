@@ -1,0 +1,62 @@
+@import '../../theme/theme.scss';
+.day-name{
+background: $grey-dark;
+width: 14%;
+padding: 10px;
+color:$white;
+}
+.weeks{
+width: 100%;
+//display: inline-block;
+}
+.enabled, .disabled{
+  display: inline-flex;
+  width: 14%;
+  flex-direction: column;
+}
+
+.disabled{
+  color: #ccc;
+}
+
+.week-date.enabled, .week-date.disabled{
+  height: 100px;
+  border: 1px solid $grey;
+  padding: 10px;
+}
+
+.today{
+  background: $grey;
+  font-weight: bold;
+  color: $blue;
+  .event-list{
+color:$black;
+  }
+}
+
+.event-list{
+  padding-bottom:0;
+  margin-bottom: 0;
+  li{
+    font-size: .8rem;
+    list-style-type: none;
+    padding:0;
+    margin-left: -2.5rem;
+  }
+}
+.more-events{
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+@media(min-width: 768px){
+  .event-list{
+    li{
+      font-size: .7rem;
+      width:140%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

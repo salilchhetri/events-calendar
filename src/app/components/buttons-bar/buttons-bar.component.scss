@@ -1,0 +1,10 @@
+@import '../../theme/theme.scss';
+.btn-group{
+  margin-right: 1rem;
+}
+
+.btn-label:disabled, .btn-label.disabled{
+  background:transparent;
+  color: $primary!important;
+  opacity: 1;
+}

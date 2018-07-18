@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row mb-3">
+    <app-buttons-bar [current]="currentDate.format('MMMM')" (previous)="prevMonth()" (next)="nextMonth()"></app-buttons-bar>
+    <app-buttons-bar [current]="currentDate.format('YYYY') " (previous)="prevYear()" (next)="nextYear()"></app-buttons-bar>
+    <app-buttons-bar [current]="'Weeks'" (previous)="prevWeek()" (next)="nextWeek()" [hidden]="!isWeekly"></app-buttons-bar>
+    <button class="btn btn-primary" (click)="weekView()">{{isWeekly ? 'Month View': 'Week View'}}</button>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let name of dayNames" class="day-name">
+      {{ name }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="weeks">
+      <div *ngFor="let week of weeks" class="week">
+        <ng-container *ngFor="let day of week">
+          <div class="week-date disabled" *ngIf="!isSelectedMonth(day.mDate)">
+            <span class="date-text">{{ day.mDate.date() }}</span>
+          </div>
+          <div class="week-date enabled" *ngIf="isSelectedMonth(day.mDate)" [ngClass]="{ today: day.today, selected: day.selected }">
+            <span class="date-text">{{ day.mDate.date() }}</span>
+            <ul class="event-list">
+              <li *ngFor="let event of day.events">
+                <span [hidden]="isMobile" *ngIf="!isWeekly">{{event.createdAt | date:'h:mm a' }}</span> {{event.name}}
+              </li>
+            </ul>
+            <span *ngIf="(day.totalEvents - 2) > 0 && !isWeekly" class="more-events">
+              +{{day.totalEvents - 2}} more events
+            </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
