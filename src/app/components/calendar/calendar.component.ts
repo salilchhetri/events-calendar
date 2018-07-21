@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import { CalendarDate } from '../models/calendar';
+import { Event } from '../models/event';
 import { DataService } from '../../services/data.service';
 
 
@@ -20,7 +21,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   initFirstOfMonth: any;
   initFirstDayOfGrid: any;
   isMobile: boolean;
-  eventArray: any;
+  eventArray: Event[];
 
   @Input() selectedDates: CalendarDate[] = [];
 
@@ -153,9 +154,9 @@ export class CalendarComponent implements OnInit, OnChanges {
     return _.range(start, start + option)
       .map((date: number): CalendarDate => {
         const d = moment(firstDayOfGrid).date(date);
-        let events = [];
+        let events: Event[] = [];
         let totalEvents;
-        this.eventArray.forEach(event => {
+        this.eventArray.forEach((event: Event) => {
           if (moment(event.createdAt).local().format('YYYY-MM-DD') === moment(d).local().format('YYYY-MM-DD')) {
             event.createdAt = new Date(moment.utc(event.createdAt).local().format('YYYY-MM-DD HH:mm:ss')).toISOString()
             events.push(event);
