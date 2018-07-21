@@ -158,7 +158,7 @@ export class CalendarComponent implements OnInit, OnChanges {
         let totalEvents;
         this.eventArray.forEach((event: Event) => {
           if (moment(event.createdAt).local().format('YYYY-MM-DD') === moment(d).local().format('YYYY-MM-DD')) {
-            event.createdAt = new Date(moment.utc(event.createdAt).local().format('YYYY-MM-DD HH:mm:ss')).toISOString()
+            event.createdAt = new Date(moment.utc(event.createdAt).local().format('YYYY-MM-DD HH:mm:ss'));
             events.push(event);
           }
         })
