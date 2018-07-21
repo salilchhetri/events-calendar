@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import * as moment from 'moment';
 import * as _ from 'lodash';
-import { CalendarDate } from '../models/calendar';
-import { Event } from '../models/event';
+import { CalendarDate } from '../../models/calendar';
+import { Event } from '../../models/event';
 import { DataService } from '../../services/data.service';
 
 
